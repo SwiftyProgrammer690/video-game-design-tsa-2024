@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3j3sl82850v4"]
+
+[ext_resource type="Script" path="res://Scripts/boot_screen.gd" id="1_fgdpy"]
+[ext_resource type="PackedScene" uid="uid://bauj70bc8gsja" path="res://Scenes/TitleScreen.tscn" id="2_qy5gm"]
+[ext_resource type="Texture2D" uid="uid://b1vk2kyiu402x" path="res://Assets/Custom Assets/Screenshot 2025-05-21 at 8.43.21 PM.png" id="3_y1gqx"]
+
+[node name="BootScreen" type="Control" node_paths=PackedStringArray("splash_screen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgdpy")
+load_scene = ExtResource("2_qy5gm")
+splash_screen = NodePath("CenterContainer/TextureRect")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1160.0
+offset_bottom = 668.0
+color = Color(0.226707, 0.226707, 0.226707, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 660.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_y1gqx")

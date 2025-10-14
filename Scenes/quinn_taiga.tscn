@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://xce7um3cnurd"]
+
+[ext_resource type="Script" path="res://Scripts/quinn_taiga.gd" id="1_fsgih"]
+[ext_resource type="Texture2D" uid="uid://beisl6qhflxr2" path="res://Assets/Custom Assets/regular_idle.png" id="1_j5o3r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5445d"]
+atlas = ExtResource("1_j5o3r")
+region = Rect2(32, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aqy3"]
+atlas = ExtResource("1_j5o3r")
+region = Rect2(112, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3vog"]
+atlas = ExtResource("1_j5o3r")
+region = Rect2(192, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rtep"]
+atlas = ExtResource("1_j5o3r")
+region = Rect2(272, 104, 16, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ry48m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5445d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aqy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3vog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rtep")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_so6l2"]
+size = Vector2(129, 124)
+
+[node name="Quinn (Taiga)" type="CharacterBody2D"]
+script = ExtResource("1_fsgih")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ry48m")
+autoplay = "default"
+frame_progress = 0.868129
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -102.0
+offset_top = -107.0
+offset_right = 109.0
+offset_bottom = -32.0
+text = "Quinn:
+Make sure to look for the
+\"eyes\" and save this corrupting island!"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 6)
+shape = SubResource("RectangleShape2D_so6l2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnrhukqriqb23"]
+
+[ext_resource type="Script" path="res://Scripts/guard_eye_1.gd" id="1_3lwve"]
+[ext_resource type="Texture2D" uid="uid://ce3ks56enqjnr" path="res://Assets/Custom Assets/regular_idle (2).png" id="2_53kb6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0fb6"]
+atlas = ExtResource("2_53kb6")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7yqd"]
+atlas = ExtResource("2_53kb6")
+region = Rect2(112, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viweb"]
+atlas = ExtResource("2_53kb6")
+region = Rect2(192, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjpmw"]
+atlas = ExtResource("2_53kb6")
+region = Rect2(272, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cpvbp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0fb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7yqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viweb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjpmw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m33y5"]
+size = Vector2(164, 245)
+
+[node name="Guard Eye 5" type="CharacterBody2D"]
+script = ExtResource("1_3lwve")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_cpvbp")
+frame_progress = 0.44209
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, 6.5)
+shape = SubResource("RectangleShape2D_m33y5")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -368.0
+offset_top = -49.0
+offset_right = -79.0
+offset_bottom = 52.0
+text = "Corrupted Guard:
+Stand back!, this is for your own good
+the Time Lord is appearing to
+corrupt the WHOLE WORLD!!!"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

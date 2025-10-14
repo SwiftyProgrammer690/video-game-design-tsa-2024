@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://d8hgkdc0diwp"]
+
+[ext_resource type="Script" path="res://Scripts/cutscene_2.gd" id="1_lg4bu"]
+[ext_resource type="Texture2D" uid="uid://btmn3inr66yu3" path="res://Assets/Custom Assets/Screenshot 2025-04-16 at 5.11.04 PM.png" id="2_n7n7w"]
+[ext_resource type="FontFile" uid="uid://dofiv24or7gos" path="res://Fonts/daydream_3/Daydream.ttf" id="3_4xn2b"]
+[ext_resource type="Texture2D" uid="uid://cx68aua0hs0h6" path="res://Assets/Hana Caraka - Base Character [sample]/idle.png" id="4_ofr6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ska0"]
+atlas = ExtResource("4_ofr6v")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xp15"]
+atlas = ExtResource("4_ofr6v")
+region = Rect2(112, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba5ou"]
+atlas = ExtResource("4_ofr6v")
+region = Rect2(192, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p214w"]
+atlas = ExtResource("4_ofr6v")
+region = Rect2(272, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p7l8k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ska0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xp15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba5ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p214w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cutscene2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lg4bu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1213.0
+offset_bottom = 691.0
+color = Color(0.403922, 0.454902, 0.235294, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(344.938, 373.938)
+scale = Vector2(0.55304, 0.543097)
+texture = ExtResource("2_n7n7w")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 54.0
+offset_right = 1132.0
+offset_bottom = 648.0
+theme_override_fonts/normal_font = ExtResource("3_4xn2b")
+theme_override_font_sizes/normal_font_size = 26
+text = "but then, the corrupters attacked, and the 
+island is now soon to be corrupted, and lose
+all of it's beauty and peacefulness
+
+
+
+
+
+
+
+
+
+
+
+
+and it's up to you to save it!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 542.0
+offset_right = 1129.0
+offset_bottom = 620.0
+theme_override_fonts/font = ExtResource("3_4xn2b")
+text = "Next"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1054, 446)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_p7l8k")
+autoplay = "default"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

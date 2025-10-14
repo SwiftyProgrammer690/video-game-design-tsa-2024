@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmxbki5iu54po"]
+
+[ext_resource type="Script" path="res://Scripts/taiga_villager.gd" id="1_000dy"]
+[ext_resource type="Texture2D" uid="uid://dwpbp8s504s8p" path="res://Assets/Custom Assets/regular_idle (1).png" id="2_ufudn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7sng"]
+atlas = ExtResource("2_ufudn")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o50u2"]
+atlas = ExtResource("2_ufudn")
+region = Rect2(112, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbsyj"]
+atlas = ExtResource("2_ufudn")
+region = Rect2(192, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnj87"]
+atlas = ExtResource("2_ufudn")
+region = Rect2(272, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kr4ik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7sng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o50u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbsyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnj87")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnqev"]
+size = Vector2(193.5, 126)
+
+[node name="Taiga Villager" type="CharacterBody2D"]
+script = ExtResource("1_000dy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_kr4ik")
+autoplay = "default"
+frame = 3
+frame_progress = 0.886
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_dnqev")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -82.0
+offset_top = 43.0
+offset_right = 402.0
+offset_bottom = 123.0
+text = "Taiga Villager:
+I heard the time lord might have 
+something to do with Quinn..."
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

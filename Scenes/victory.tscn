@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1gyvttdgrwgu"]
+
+[ext_resource type="Script" path="res://Scripts/victory.gd" id="1_jrxoq"]
+[ext_resource type="FontFile" uid="uid://dofiv24or7gos" path="res://Fonts/daydream_3/Daydream.ttf" id="1_uti41"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jrxoq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1213.0
+offset_bottom = 691.0
+color = Color(0.435294, 0.760784, 0.631373, 1)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 130.0
+offset_right = 1313.0
+offset_bottom = 724.0
+theme_override_fonts/normal_font = ExtResource("1_uti41")
+theme_override_font_sizes/normal_font_size = 100
+text = "VICTORY!"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 297.0
+offset_right = 1327.0
+offset_bottom = 891.0
+theme_override_fonts/normal_font = ExtResource("1_uti41")
+theme_override_font_sizes/normal_font_size = 30
+text = "Thanks for playing judges!
+Keep on playing with bonus 
+levels!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 478.0
+offset_right = 947.0
+offset_bottom = 577.0
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c65w3jy2365ho"]
+
+[ext_resource type="Script" path="res://Scripts/box.gd" id="1_4f2v0"]
+[ext_resource type="Texture2D" uid="uid://cqgrlxgqegyah" path="res://Assets/Custom Assets/box_eye.png" id="2_4bqdu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgj33"]
+size = Vector2(47, 48)
+
+[node name="Box" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_4f2v0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_4bqdu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_hgj33")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

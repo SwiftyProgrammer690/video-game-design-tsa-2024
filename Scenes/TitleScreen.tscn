@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://bauj70bc8gsja"]
+
+[ext_resource type="Script" path="res://TitleScreen.gd" id="1_nm1ww"]
+[ext_resource type="FontFile" uid="uid://boiby03sl2w85" path="res://Fonts/pizzabot/pizzabot.ttf" id="2_nyrcq"]
+[ext_resource type="FontFile" uid="uid://dofiv24or7gos" path="res://Fonts/daydream_3/Daydream.ttf" id="3_akmtn"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nm1ww")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1213.0
+offset_bottom = 691.0
+color = Color(0.403922, 0.454902, 0.235294, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 121.0
+offset_right = 1203.0
+offset_bottom = 608.0
+theme_override_fonts/normal_font = ExtResource("2_nyrcq")
+theme_override_font_sizes/normal_font_size = 90
+text = "the enchanted"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 240.0
+offset_right = 1457.0
+offset_bottom = 727.0
+theme_override_fonts/normal_font = ExtResource("2_nyrcq")
+theme_override_font_sizes/normal_font_size = 78
+text = "isles"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 351.0
+offset_right = 808.0
+offset_bottom = 502.0
+theme_override_fonts/font = ExtResource("3_akmtn")
+theme_override_font_sizes/font_size = 38
+text = "Start Game"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 556.0
+offset_right = 1182.0
+offset_bottom = 636.0
+text = "Note: If there is gray outside the game \"window\", this is because of how itch.io (the website that hosts this \"web\" export) handles web viewports. From time to time, it will go from correct resolutions to incorrect resolutions. This shouldn't effect the game experience."
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

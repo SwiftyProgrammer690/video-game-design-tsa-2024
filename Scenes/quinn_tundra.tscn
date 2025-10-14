@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://0xotqk0w6436"]
+
+[ext_resource type="Script" path="res://Scripts/quinn_tundra.gd" id="1_dm6ao"]
+[ext_resource type="Texture2D" uid="uid://beisl6qhflxr2" path="res://Assets/Custom Assets/regular_idle.png" id="1_irhfd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjbt3"]
+atlas = ExtResource("1_irhfd")
+region = Rect2(32, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y86w"]
+atlas = ExtResource("1_irhfd")
+region = Rect2(112, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2tsi"]
+atlas = ExtResource("1_irhfd")
+region = Rect2(192, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6r23"]
+atlas = ExtResource("1_irhfd")
+region = Rect2(272, 104, 16, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihgij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjbt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y86w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2tsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6r23")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25gc7"]
+size = Vector2(188, 139)
+
+[node name="Quinn (Tundra)" type="CharacterBody2D"]
+script = ExtResource("1_dm6ao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ihgij")
+autoplay = "default"
+frame_progress = 0.529967
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 7.5)
+shape = SubResource("RectangleShape2D_25gc7")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 40.0
+offset_top = -65.0
+offset_right = 344.0
+offset_bottom = 62.0
+text = "Quinn:
+Hey, you made it to the ice villages!
+Theres an eye down there corrupting
+the soil! These villagers desperately
+need help! Do you think you're up to it?"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2gh0s81jke0x"]
+
+[ext_resource type="Script" path="res://Scripts/quinn_platformer_1.gd" id="1_oxlgm"]
+[ext_resource type="Texture2D" uid="uid://beisl6qhflxr2" path="res://Assets/Custom Assets/regular_idle.png" id="2_knee8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd5vb"]
+atlas = ExtResource("2_knee8")
+region = Rect2(32, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahv4b"]
+atlas = ExtResource("2_knee8")
+region = Rect2(112, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53woa"]
+atlas = ExtResource("2_knee8")
+region = Rect2(192, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppr32"]
+atlas = ExtResource("2_knee8")
+region = Rect2(272, 104, 16, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_klt2d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd5vb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahv4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53woa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppr32")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1lov"]
+size = Vector2(155, 65)
+
+[node name="Quinn" type="CharacterBody2D"]
+script = ExtResource("1_oxlgm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_klt2d")
+autoplay = "default"
+frame_progress = 0.671378
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -10.5)
+shape = SubResource("RectangleShape2D_g1lov")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -62.0
+offset_top = -59.0
+offset_right = 243.0
+offset_bottom = -36.0
+text = "Watch your step!"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="child_entered_tree" from="Area2D" to="." method="_on_area_2d_child_entered_tree"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://d784xrm5lbtv"]
+
+[ext_resource type="Texture2D" uid="uid://cpfabpstm35me" path="res://Assets/Custom Assets/ice_villager.png" id="1_41hu2"]
+[ext_resource type="Script" path="res://Scripts/ice_villager_1.gd" id="1_rp6f0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pfeb"]
+atlas = ExtResource("1_41hu2")
+region = Rect2(32, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11tf5"]
+atlas = ExtResource("1_41hu2")
+region = Rect2(112, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wyns"]
+atlas = ExtResource("1_41hu2")
+region = Rect2(192, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt71k"]
+atlas = ExtResource("1_41hu2")
+region = Rect2(272, 104, 16, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6n14r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pfeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11tf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wyns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt71k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbsa"]
+size = Vector2(151, 117)
+
+[node name="Ice Villager 1" type="CharacterBody2D"]
+script = ExtResource("1_rp6f0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_6n14r")
+autoplay = "default"
+frame_progress = 0.55639
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_kdbsa")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -97.0
+offset_top = 38.0
+offset_right = 125.0
+offset_bottom = 87.0
+text = "Ice Villager:
+Brr... it's pretty cold out here"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

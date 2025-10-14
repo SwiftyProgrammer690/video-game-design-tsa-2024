@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://bubjsar47l07c"]
+
+[ext_resource type="Texture2D" uid="uid://b42r11eq6mkhj" path="res://Assets/Custom Assets/hostile_idle.png" id="1_d78hm"]
+[ext_resource type="Script" path="res://Scripts/hostile_quinn.gd" id="1_uk02n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1ngx"]
+atlas = ExtResource("1_d78hm")
+region = Rect2(32, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10t6c"]
+atlas = ExtResource("1_d78hm")
+region = Rect2(112, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg34o"]
+atlas = ExtResource("1_d78hm")
+region = Rect2(192, 104, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d73pw"]
+atlas = ExtResource("1_d78hm")
+region = Rect2(272, 104, 16, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b0bu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1ngx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10t6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg34o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d73pw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfuly"]
+size = Vector2(345, 297)
+
+[node name="Quinn (Hostile)" type="CharacterBody2D"]
+script = ExtResource("1_uk02n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_b0bu3")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.72364
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2.5, -2.5)
+shape = SubResource("RectangleShape2D_hfuly")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+texture_filter = 1
+offset_left = -56.0
+offset_top = -75.0
+offset_right = 59.0
+offset_bottom = -26.0
+text = "Quinn:
+FRee mE!"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

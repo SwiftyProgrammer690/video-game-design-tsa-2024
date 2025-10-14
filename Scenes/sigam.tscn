@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjnnpxjmdrq0t"]
+
+[ext_resource type="FontFile" uid="uid://dofiv24or7gos" path="res://Fonts/daydream_3/Daydream.ttf" id="1_upxtw"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0.262745, 0.262745, 0.262745, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 254.0
+offset_right = 980.0
+offset_bottom = 487.0
+theme_override_fonts/normal_font = ExtResource("1_upxtw")
+theme_override_font_sizes/normal_font_size = 74
+text = "Team 2332"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 366.0
+offset_right = 980.0
+offset_bottom = 599.0
+theme_override_fonts/normal_font = ExtResource("1_upxtw")
+theme_override_font_sizes/normal_font_size = 33
+text = "TSA Video Game Design"

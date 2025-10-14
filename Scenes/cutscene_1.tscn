@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwik41f3cx5yg"]
+
+[ext_resource type="FontFile" uid="uid://boiby03sl2w85" path="res://Fonts/pizzabot/pizzabot.ttf" id="1_7svyn"]
+[ext_resource type="Script" path="res://Scripts/cutscene_1.gd" id="1_leaxy"]
+[ext_resource type="FontFile" uid="uid://dofiv24or7gos" path="res://Fonts/daydream_3/Daydream.ttf" id="2_cr8jb"]
+[ext_resource type="Texture2D" uid="uid://b76qv331wijft" path="res://Assets/Custom Assets/Screenshot 2025-04-16 at 5.10.08 PM.png" id="3_c7g21"]
+
+[node name="Cutscene1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_leaxy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1213.0
+offset_bottom = 691.0
+color = Color(0.403922, 0.454902, 0.235294, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 47.0
+offset_right = 1159.0
+offset_bottom = 534.0
+theme_override_fonts/normal_font = ExtResource("1_7svyn")
+theme_override_font_sizes/normal_font_size = 98
+text = "once apon a time..."
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 172.0
+offset_right = 1132.0
+offset_bottom = 506.0
+theme_override_fonts/normal_font = ExtResource("2_cr8jb")
+theme_override_font_sizes/normal_font_size = 26
+text = "there was a peaceful and undisturbed island system.
+
+Called, the enchanted isles..."
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(279, 479)
+scale = Vector2(0.437664, 0.434087)
+texture = ExtResource("3_c7g21")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 542.0
+offset_right = 1129.0
+offset_bottom = 620.0
+theme_override_fonts/font = ExtResource("2_cr8jb")
+text = "Next"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

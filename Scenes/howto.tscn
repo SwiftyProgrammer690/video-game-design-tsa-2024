@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtktqhhnwrmq8"]
+
+[ext_resource type="Script" path="res://Scripts/howto.gd" id="1_tb264"]
+[ext_resource type="FontFile" uid="uid://dofiv24or7gos" path="res://Fonts/daydream_3/Daydream.ttf" id="2_3xwbe"]
+[ext_resource type="Texture2D" uid="uid://cydcdbi6mbpvs" path="res://assets/Custom Assets/Screenshot 2025-04-16 at 7.44.04 PM.png" id="2_6a5p8"]
+[ext_resource type="Texture2D" uid="uid://cx68aua0hs0h6" path="res://Assets/Hana Caraka - Base Character [sample]/idle.png" id="3_h02ql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ska0"]
+atlas = ExtResource("3_h02ql")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xp15"]
+atlas = ExtResource("3_h02ql")
+region = Rect2(112, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba5ou"]
+atlas = ExtResource("3_h02ql")
+region = Rect2(192, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p214w"]
+atlas = ExtResource("3_h02ql")
+region = Rect2(272, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nltc4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ska0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xp15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba5ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p214w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tb264")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1213.0
+offset_bottom = 691.0
+color = Color(0.631373, 0.596078, 0.713726, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(528, 571)
+scale = Vector2(0.408921, 0.426796)
+texture = ExtResource("2_6a5p8")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 28.0
+offset_top = 38.0
+offset_right = 1132.0
+offset_bottom = 632.0
+theme_override_fonts/normal_font = ExtResource("2_3xwbe")
+theme_override_font_sizes/normal_font_size = 44
+text = "How to play!
+"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 28.0
+offset_top = 124.0
+offset_right = 1132.0
+offset_bottom = 718.0
+theme_override_fonts/normal_font = ExtResource("2_3xwbe")
+theme_override_font_sizes/normal_font_size = 27
+text = "Player Controls (Topdown):
+W - Up, A - Left, s - down, d - right
+
+Player Controls (Platformer):
+w/space - up, a - left, d - right, r - redo level
+
+game directions:
+in the topdown (when on island)
+mode, look out for \"eyes\" and enter
+them by going into them
+
+
+eyes (topdown):
+"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 980.0
+offset_top = 542.0
+offset_right = 1129.0
+offset_bottom = 620.0
+theme_override_fonts/font = ExtResource("2_3xwbe")
+text = "Play"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1054, 446)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_nltc4")
+autoplay = "default"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
